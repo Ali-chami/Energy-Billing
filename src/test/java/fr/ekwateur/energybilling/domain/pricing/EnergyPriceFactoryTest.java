@@ -6,10 +6,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import fr.ekwateur.energybilling.application.ConsumptionFixture;
 import fr.ekwateur.energybilling.domain.model.Client;
 import fr.ekwateur.energybilling.infrastructure.config.ConfigurationReader;
 import fr.ekwateur.energybilling.infrastructure.exception.InvalidClientTypeException;
+import fr.ekwateur.energybilling.testUtils.ConsumptionFixture;
 import java.math.BigDecimal;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

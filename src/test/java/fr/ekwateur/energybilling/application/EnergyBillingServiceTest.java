@@ -5,6 +5,7 @@ import fr.ekwateur.energybilling.domain.model.Consumption;
 import fr.ekwateur.energybilling.domain.model.EnergyType;
 import fr.ekwateur.energybilling.infrastructure.config.ConfigurationReader;
 import fr.ekwateur.energybilling.infrastructure.config.PropertiesConfigurationReader;
+import fr.ekwateur.energybilling.testUtils.ConsumptionFixture;
 import java.math.BigDecimal;
 import java.time.YearMonth;
 import java.util.List;

@@ -1,4 +1,4 @@
-package fr.ekwateur.energybilling.application;
+package fr.ekwateur.energybilling.testUtils;
 
 import com.github.javafaker.Faker;
 import fr.ekwateur.energybilling.domain.model.Client;
@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
+// Cette classe a été ajouté specialement pour avoir des jeux de données pour le main.
+// Dans cette version on utilise pas de repository, car le but est de calculer les consommations
 public class ConsumptionFixture {
 
   private static final Faker faker = new Faker(new Locale("fr"));
@@ -26,18 +28,18 @@ public class ConsumptionFixture {
   }
 
   public static Client createParticularClient() {
-    String reference = generateReference();
-    String civility = faker.name().prefix();
-    String firstName = faker.name().firstName();
-    String lastName = faker.name().lastName();
+    final String reference = generateReference();
+    final String civility = faker.name().prefix();
+    final String firstName = faker.name().firstName();
+    final String lastName = faker.name().lastName();
     return new ParticularClient(reference, civility, firstName, lastName);
   }
 
   public static Client createProClient(Boolean higherTurnover) {
-    String reference = generateReference();
-    String siret = faker.number().digits(14);
-    String companyName = faker.company().name();
-    BigDecimal turnover = generateRandomTurnover(higherTurnover);
+    final String reference = generateReference();
+    final String siret = faker.number().digits(14);
+    final String companyName = faker.company().name();
+    final BigDecimal turnover = generateRandomTurnover(higherTurnover);
     return new ProClient(reference, siret, companyName, turnover);
   }
 
@@ -46,8 +48,8 @@ public class ConsumptionFixture {
   }
 
   private static BigDecimal generateRandomConsumption(BigDecimal min, BigDecimal max) {
-    BigDecimal range = max.subtract(min);
-    BigDecimal randomFactor = BigDecimal.valueOf(faker.number().randomDouble(2, 0, 1));
+    final BigDecimal range = max.subtract(min);
+    final BigDecimal randomFactor = BigDecimal.valueOf(faker.number().randomDouble(2, 0, 1));
     return min.add(range.multiply(randomFactor));
   }
 

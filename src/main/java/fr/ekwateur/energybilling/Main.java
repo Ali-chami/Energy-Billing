@@ -1,5 +1,6 @@
-package fr.ekwateur.energybilling.application;
+package fr.ekwateur.energybilling;
 
+import fr.ekwateur.energybilling.application.EnergyBillingService;
 import fr.ekwateur.energybilling.domain.model.Client;
 import fr.ekwateur.energybilling.domain.model.Consumption;
 import fr.ekwateur.energybilling.domain.model.EnergyType;
@@ -31,7 +32,7 @@ public class Main {
 
   private static void generateBillForParticularClient(EnergyBillingService energyBillingService) {
     // Création d'un client particulier
-    final Client particularClient = ConsumptionFixture.createParticularClient();
+    final Client particularClient = ConsumptionDataGenerator.createParticularClient();
     System.out.println("Client: " + particularClient);
 
     // Génération de consommations aléatoires pour un mois donné
@@ -48,7 +49,7 @@ public class Main {
   private static void generateBillForProClient(EnergyBillingService energyBillingService,
       Boolean higherTurnover) {
     // Création d'un client pro avec un chiffre d'affaire superieur a 1M
-    final Client proClient = ConsumptionFixture.createProClient(higherTurnover);
+    final Client proClient = ConsumptionDataGenerator.createProClient(higherTurnover);
     System.out.println("Client: " + proClient);
 
     // Génération de consommations aléatoires pour un mois donné
@@ -64,11 +65,11 @@ public class Main {
   private static void generateConsumptionsAndCalculateTheBill(
       EnergyBillingService energyBillingService, Client particularClient, LocalDate startDate,
       LocalDate endDate, BigDecimal minConsumption, BigDecimal maxConsumption, YearMonth month) {
-    final List<Consumption> consumptionsOfElectricity = ConsumptionFixture
+    final List<Consumption> consumptionsOfElectricity = ConsumptionDataGenerator
         .createConsumptions(particularClient, startDate, endDate, EnergyType.ELECTRICITY,
             minConsumption,
             maxConsumption);
-    final List<Consumption> consumptionsOfGas = ConsumptionFixture
+    final List<Consumption> consumptionsOfGas = ConsumptionDataGenerator
         .createConsumptions(particularClient, startDate, endDate, EnergyType.GAS, minConsumption,
             maxConsumption);
 
